@@ -1,0 +1,191 @@
+[gd_scene load_steps=23 format=3 uid="uid://dl4clvasx7fdg"]
+
+[ext_resource type="Script" path="res://Game/Game.gd" id="1_io2g3"]
+[ext_resource type="Texture2D" uid="uid://ch6y8l8sf0jkj" path="res://Backgrounds/EndBackground.png" id="2_8uipa"]
+[ext_resource type="Texture2D" uid="uid://bej0f1cpe1q5t" path="res://Play/Start.png" id="3_huwcu"]
+[ext_resource type="Script" path="res://Game/PlayText.gd" id="4_oq7ol"]
+[ext_resource type="Texture2D" uid="uid://6k4xkjhm3lbp" path="res://Score/Header.png" id="5_y630e"]
+[ext_resource type="Texture2D" uid="uid://b8xxo1biwp7ue" path="res://Bird/Bird.png" id="6_ufu1o"]
+[ext_resource type="Script" path="res://Bird/Bird.gd" id="7_fuamy"]
+[ext_resource type="Texture2D" uid="uid://1i1ryj4f0ir6" path="res://Score/0.png" id="8_kp5tl"]
+[ext_resource type="Texture2D" uid="uid://bt08dfh2wjs1u" path="res://Score/ShieldIcon.png" id="9_7nv8k"]
+[ext_resource type="Texture2D" uid="uid://bdte0um8x3ddv" path="res://Sun/Sun.png" id="10_8khwi"]
+[ext_resource type="AudioStream" uid="uid://ba1hlb4dbp5om" path="res://Audio/KleptoLindaMountainA.wav" id="11_8mx5y"]
+[ext_resource type="AudioStream" uid="uid://kb6q73oudk5u" path="res://Audio/Explosion.sfxr" id="12_qc5xx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gdc6i"]
+atlas = ExtResource("6_ufu1o")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4dhqf"]
+atlas = ExtResource("6_ufu1o")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7sn1"]
+atlas = ExtResource("6_ufu1o")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4vevr"]
+atlas = ExtResource("6_ufu1o")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nwcju"]
+atlas = ExtResource("6_ufu1o")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4egvw"]
+atlas = ExtResource("6_ufu1o")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trcbj"]
+atlas = ExtResource("6_ufu1o")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ooay0"]
+atlas = ExtResource("6_ufu1o")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d3gdn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gdc6i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4dhqf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7sn1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4vevr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nwcju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4egvw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trcbj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ooay0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7l874"]
+radius = 4.12311
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_io2g3")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+texture = ExtResource("2_8uipa")
+
+[node name="Num1" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(14, 19)
+texture = ExtResource("8_kp5tl")
+
+[node name="Num2" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(22, 19)
+texture = ExtResource("8_kp5tl")
+
+[node name="Num3" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(30, 19)
+texture = ExtResource("8_kp5tl")
+
+[node name="Num4" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(38, 19)
+texture = ExtResource("8_kp5tl")
+
+[node name="Num5" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(46, 19)
+texture = ExtResource("8_kp5tl")
+
+[node name="Sun" type="Sprite2D" parent="."]
+position = Vector2(0, -104)
+texture = ExtResource("10_8khwi")
+
+[node name="Powerups" type="Node2D" parent="."]
+
+[node name="Clouds" type="Node2D" parent="."]
+
+[node name="Bird" type="AnimatedSprite2D" parent="."]
+position = Vector2(-100, -1)
+sprite_frames = SubResource("SpriteFrames_d3gdn")
+autoplay = "default"
+frame = 7
+frame_progress = 0.953974
+script = ExtResource("7_fuamy")
+
+[node name="Area2D" type="Area2D" parent="Bird"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bird/Area2D"]
+shape = SubResource("CircleShape2D_7l874")
+
+[node name="Play" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, 38)
+texture = ExtResource("3_huwcu")
+script = ExtResource("4_oq7ol")
+
+[node name="Header" type="Sprite2D" parent="."]
+position = Vector2(-70, -50)
+texture = ExtResource("5_y630e")
+offset = Vector2(0, -0.5)
+
+[node name="Num1" type="Sprite2D" parent="Header"]
+position = Vector2(6, -8)
+texture = ExtResource("8_kp5tl")
+
+[node name="Num2" type="Sprite2D" parent="Header"]
+position = Vector2(14, -8)
+texture = ExtResource("8_kp5tl")
+
+[node name="Num3" type="Sprite2D" parent="Header"]
+position = Vector2(22, -8)
+texture = ExtResource("8_kp5tl")
+
+[node name="Num4" type="Sprite2D" parent="Header"]
+position = Vector2(30, -8)
+texture = ExtResource("8_kp5tl")
+
+[node name="Num5" type="Sprite2D" parent="Header"]
+position = Vector2(38, -8)
+texture = ExtResource("8_kp5tl")
+
+[node name="Mul1" type="Sprite2D" parent="Header"]
+position = Vector2(-41, 8)
+texture = ExtResource("8_kp5tl")
+
+[node name="Mul2" type="Sprite2D" parent="Header"]
+position = Vector2(-33, 8)
+texture = ExtResource("8_kp5tl")
+
+[node name="Shield" type="Sprite2D" parent="Header"]
+visible = false
+position = Vector2(-9, 8)
+texture = ExtResource("9_7nv8k")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_8mx5y")
+volume_db = 10.0
+autoplay = true
+
+[node name="Audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_qc5xx")
+volume_db = -10.0
+
+[connection signal="area_entered" from="Bird/Area2D" to="Bird" method="onAreaEntered"]

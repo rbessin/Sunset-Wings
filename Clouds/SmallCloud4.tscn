@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5unar8yg7uc7"]
+
+[ext_resource type="Texture2D" uid="uid://3sgv4wv5euj" path="res://Clouds/SmallCloud4.png" id="1_6s1rv"]
+[ext_resource type="Script" path="res://Clouds/Cloud.gd" id="2_hrl8i"]
+
+[node name="SmallCloud4" type="Sprite2D" groups=["Clouds"]]
+texture = ExtResource("1_6s1rv")
+script = ExtResource("2_hrl8i")
+
+[node name="Area2D" type="Area2D" parent="." groups=["Clouds"]]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" groups=["Clouds"]]
+position = Vector2(2, 1)
+polygon = PackedVector2Array(-3, -5, 3, -5, 3, -4, 5, -4, 5, -2, 6, -2, 6, 0, 7, 0, 7, 1, 8, 1, 8, 0, 11, 0, 11, 1, 12, 1, 12, 4, -16, 4, -16, 0, -15, 0, -15, -2, -14, -2, -14, -3, -9, -3, -9, -2, -8, -2, -8, -1, -6, -1, -6, -2, -5, -2, -5, -4, -3, -4)
